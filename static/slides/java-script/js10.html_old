@@ -1,0 +1,21 @@
+<!--
+/**
+description: Osnovni HTML dokument z JavaScript kodo
+
+slide-text-start
+JavaScript koda je zaprta znotraj elementa SCRIPT
+slide-text-end
+**/
+-->
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+    <script>
+      console.log("to je test", 123)
+    </script>
+  </body>
+</html>

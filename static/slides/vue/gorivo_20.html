@@ -1,0 +1,53 @@
+<!--
+/**
+description: Branje podatkov s pomočjo posredniškega strežnika
+
+slide-text-start
+Branje podatkov
+Prikaz podatkov na ekranu
+slide-text-end
+**/
+-->
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="utf-8">
+    <title>Črpalke in cene goriv</title>
+  </head>
+  <body style="font-size: 250%">
+    <div id="app">
+      <div v-if="napaka">{{ napaka }}</div>
+      <pre v-if="podatki">{{ podatki }}</pre>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+<script>
+const CORS_URL = 'https://cors-anywhere.herokuapp.com/'
+
+let app = new Vue({
+  el: '#app',
+
+  data: {
+    podatki: null,
+    napaka: null,
+  },
+
+  methods: {
+    isci(kraj) {
+      let goriva_url = "https://goriva.si/api/v1/search/"
+
+      axios.get(CORS_URL + goriva_url, { params: { 'position': kraj } })
+        .then(response => { this.podatki = response })
+        .catch(e => { this.napaka = e })
+    }
+  },
+
+  mounted() {
+    this.isci('maribor')
+  }
+})
+</script>
+  </body>
+</html>

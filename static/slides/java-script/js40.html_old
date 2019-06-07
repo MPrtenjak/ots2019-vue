@@ -1,0 +1,46 @@
+<!--
+/**
+description: JavaScript in doseg spremenljivk II
+
+slide-text-start
+Lokalne spremenljivke?
+nedefinirane spremenljivke?
+slide-text-end
+**/
+-->
+<!doctype html>
+<html lang="sl">
+  <head><meta charset="utf-8"></head>
+  <body style="font-size: 250%"><div id="results"></div>
+<script src="../../js/fake-console.js"></script>
+<script>
+var i = 10
+
+console.log("[ 3] == ", i)
+test()
+console.log("[ 5] == ", i)
+
+function test() {
+  console.log("[ 8] == ", i)
+  var i = 20
+  console.log("[10] == ", i)
+}
+
+console.log("[13] == ", i)
+test()
+console.log("[15] == ", i)
+
+/*
+[ 3] ==  10
+[ 8] ==  undefined
+[10] ==  20
+[ 5] ==  10
+[13] ==  10
+[ 8] ==  undefined
+[10] ==  20
+[15] ==  10
+*/
+</script>
+  </body>
+
+</html>

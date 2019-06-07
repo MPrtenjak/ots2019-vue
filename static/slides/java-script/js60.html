@@ -1,0 +1,38 @@
+<!--
+/**
+description: JavaScript in razredi/objekti
+
+slide-text-start
+Deklaracija razreda
+Ustvarjanje objekta
+Redefinicija metode
+slide-text-end
+**/
+-->
+<!doctype html>
+<html lang="sl">
+  <head><meta charset="utf-8"></head>
+  <body style="font-size: 250%"><div id="results"></div>
+<script src="../../js/fake-console.js"></script>
+<script>
+function Oseba(ime, priimek) {
+  this.ime = ime
+  this.priimek = priimek
+  this.izpisi = function() { console.log(`oseba = ${this.ime} ${this.priimek}`) }
+}
+
+Oseba("James", "Bond")
+var peter = new Oseba("Peter", "Veliki")
+var aleksander = new Oseba("Aleksander", "Veliki")
+
+peter.izpisi()       // »oseba = Peter Veliki«
+aleksander.izpisi()  // »oseba = Aleksander Veliki«
+
+peter.izpisi = function() { console.log(`oseba = ${ime} Mali`) }
+
+peter.izpisi()      // »oseba = James Mali« // POZOR, kazalec this!
+aleksander.izpisi() // »oseba = Aleksander Veliki«
+</script>
+  </body>
+
+</html>

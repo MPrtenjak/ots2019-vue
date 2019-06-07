@@ -1,0 +1,112 @@
+<!--
+/**
+description: Uporaba zunanjih CSS knjižnic - Font awesome
+
+slide-text-start
+Izboljšana uporabniška izkušnja
+Ikonce
+Nedvoumen prikaz iskanja
+Prikaz na zemljevidu
+slide-text-end
+**/
+-->
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <title>Črpalke in cene goriv</title>
+  </head>
+  <body style="font-size: 150%">
+    <div id="app" class="container">
+      <div class="alert alert-primary">
+        <h3>Črpalke in cene goriv (10km ob izbranem kraju)</h3>
+      </div>
+
+      <div v-if="napaka" class="alert alert-danger">{{ napaka }}</div>
+
+      <div class="alert alert-light">
+        <form action="javascript:void(0);" class="text-center">
+          <i v-if="iscem" class="fas fa-spinner fa-pulse fa-4x" style="color: red"></i>
+          <span v-else>
+            <input type="text" placeholder="Kraj..." v-model="kraj" @keyup.enter="isci">
+            <button type="button" @click="isci">Išči</button>
+          </span>
+        </form>
+      </div>
+
+      <table v-if="podatki" class="table table-hover table-sm">
+        <tr>
+          <th>#</th>
+          <th>Naziv</th>
+          <th>Naslov</th>
+          <th>95</th>
+          <th>100</th>
+          <th>Dizel</th>
+          <th>LPG</th>
+        </tr>
+        <tr v-for="(podatek, pidx) in podatki" :key="pidx">
+          <th>{{ pidx + 1 }}</th>
+          <th><i class="fas fa-gas-pump"></i> {{ podatek.name }}<br>
+          <th><a :href="sestaviMapsURL(podatek)" target="_blank"><i class="fas fa-map-marker-alt"></i> {{ podatek.address }}</a>
+          </th>
+          <th>{{ prikaziZnesek(podatek.prices['95']) }} </th>
+          <th>{{ prikaziZnesek(podatek.prices['100']) }}</th>
+          <th>{{ prikaziZnesek(podatek.prices.dizel) }}</th>
+          <th>{{ prikaziZnesek(podatek.prices['avtoplin-lpg']) }}</th>
+        </tr>
+      </table>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+<script>
+const CORS_URL = 'https://cors-anywhere.herokuapp.com/'
+
+let app = new Vue({
+  el: '#app',
+
+  data: {
+    podatki: null,
+    napaka: null,
+    kraj: null,
+    iscem: null,
+  },
+
+  methods: {
+    isci() {
+      this.podatki = null
+      this.napaka = null
+
+      if ((!this.kraj) || (this.kraj.trim().length < 3)) {
+        this.napaka = "Vpišite vsaj prve tri črke kraja, ki ga iščete"
+        return
+      }
+
+      let goriva_url = "https://goriva.si/api/v1/search/"
+      let goriva_data = { 'position': this.kraj, 'radius': 10000 }
+
+      this.iscem = true;
+      axios.get(CORS_URL + goriva_url, { params: goriva_data })
+        .then(response => { this.podatki = response.data.results })
+        .catch(e => { this.napaka = e })
+        .finally(() => { this.iscem = null })
+    },
+    sestaviMapsURL(podatek) {
+      return `https://www.google.com/maps/search/?api=1&query=${podatek.lat},${podatek.lng}`
+    },
+    prikaziZnesek(znesek) {
+      if (znesek)
+        return (znesek + '000').substring(0, 5).replace('.', ',')
+
+      return '-'
+    }
+  },
+})
+</script>
+  </body>
+</html>

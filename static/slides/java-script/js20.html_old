@@ -1,0 +1,32 @@
+<!--
+/**
+description: Redefinicija vgrajene funkcije
+
+slide-text-start
+Definicija LASTNEGA objekta 'console' s funkcijo 'log'
+slide-text-end
+**/
+-->
+<!doctype html>
+<html lang="sl">
+  <head><meta charset="utf-8"></head>
+  <body style="font-size: 250%"><div id="results"></div>
+<script>
+let console = {
+  log: function() {
+    let args = Array.prototype.slice.call(arguments);
+    let message = args.join(' ')
+
+    var preNode = document.createElement("pre");
+    preNode.appendChild(document.createTextNode(message));
+
+    var resultsNode = document.getElementById("results");
+    resultsNode.appendChild(preNode);
+  }
+}
+
+console.log("to je test", 123)
+</script>
+  </body>
+
+</html>

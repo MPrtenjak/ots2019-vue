@@ -1,0 +1,50 @@
+<!--
+/**
+description: Uporaba knjižnic VUE in Axios (za dostop do podatkov preko REST)
+
+slide-text-start
+Podatki s strani: <a href="https://goriva.si" target="_blank">https://goriva.si</a>
+Povezava do izvornih podatkov: <a href="https://goriva.si/api/v1/search/?position=maribor&radius=5000&franchise=&name=&o="" target="_blank">REST klic</a>
+Osnovni VUE objekt
+Iskanje podatkov preko REST GET metode
+slide-text-end
+**/
+-->
+<!doctype html>
+<html lang="sl">
+  <head>
+    <meta charset="utf-8">
+    <title>Črpalke in cene goriv</title>
+  </head>
+  <body style="font-size: 250%">
+    <div id="app">
+      <pre id="data"></pre>
+    </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+<script>
+const CORS_URL = 'https://cors-anywhere.herokuapp.com/'
+
+let app = new Vue({
+  el: '#app',
+
+  methods: {
+    isci(kraj) {
+      let dataNode = document.getElementById("data");
+      let goriva_url = "https://goriva.si/api/v1/search/"
+
+      axios.get(CORS_URL + goriva_url, { params: { 'position': kraj } })
+        .then(response => { dataNode.appendChild(document.createTextNode(JSON.stringify(response, null, 2))); })
+        .catch(e => { dataNode.appendChild(document.createTextNode(JSON.stringify(e, null, 2))); })
+    }
+  },
+
+  mounted() {
+    this.isci('maribor')
+  }
+})
+</script>
+  </body>
+</html>
