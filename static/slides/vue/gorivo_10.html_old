@@ -1,6 +1,6 @@
 <!--
 /**
-description: Branje podatkov s pomočjo posredniškega strežnika
+description: Uporaba knjižnic VUE in Axios (za dostop do podatkov preko REST)
 
 slide-text-start
 Podatki s strani: <a href="https://goriva.si" target="_blank">https://goriva.si</a>
@@ -18,8 +18,7 @@ slide-text-end
   </head>
   <body style="font-size: 200%">
     <div id="app">
-      <div v-if="napaka">{{ napaka }}</div>
-      <pre v-if="podatki">{{ podatki }}</pre>
+      <pre id="data"></pre>
     </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
@@ -32,20 +31,16 @@ const CORS_URL = 'https://cors-anywhere.herokuapp.com/'
 let app = new Vue({
   el: '#app',
 
-  data: {
-    podatki: null,
-    napaka: null,
-  },
-
   methods: {
     isci(kraj) {
+      let dataNode = document.getElementById("data");
       let goriva_url = "https://goriva.si/api/v1/search/"
 
       axios.get(CORS_URL + goriva_url, { params: { 'position': kraj } })
-        .then(response => { this.podatki = response.data.results })
+        .then(response => { dataNode.appendChild(document.createTextNode(JSON.stringify(response, null, 2))); })
         .catch(e => {
           console.log("napaka: ", e); // this.napaka = e
-          this.podatki = fake_data.data.results
+          dataNode.appendChild(document.createTextNode(JSON.stringify(fake_data, null, 2)));
         })
     }
   },

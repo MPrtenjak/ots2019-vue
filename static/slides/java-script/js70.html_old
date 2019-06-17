@@ -1,0 +1,36 @@
+<!--
+/**
+description: JavaScript in kazalec this
+
+slide-text-start
+Kazalec this je "izmuzljiv", težko je vedeti kam kaže v nekem konkretnem trenutku izvajanja programa
+slide-text-end
+**/
+-->
+<!doctype html>
+<html lang="sl">
+  <head><meta charset="utf-8"></head>
+  <body style="font-size: 200%"><div id="results"></div>
+<script src="../../js/fake-console.js"></script>
+<script>
+function Razred1() {
+  this.ime = 'razred1';
+  this.funkcija = function() {
+     console.log(this.ime)
+  }
+}
+
+function Razred2() {
+  this.ime = 'razred2';
+}
+
+var r1 = new Razred1();
+var r2 = new Razred2();
+
+r1.funkcija();        // "rezred1"
+// r2.funkcija();     // Uncaught TypeError: r2.funkcija is not a function
+r1.funkcija.call(r2); // "rezred2"
+</script>
+  </body>
+
+</html>

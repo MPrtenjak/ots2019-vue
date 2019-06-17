@@ -2,8 +2,8 @@ import pagesData from '~/assets/pages.json'
 import _ from 'underscore'
 
 export const state = () => ({
-  theme: localStorage.getItem('theme') || 'dark',
-  fontSize: localStorage.getItem('fontSize') || 100,
+  theme: localStorage.getItem('theme') || 'light',
+  fontSize: localStorage.getItem('fontSize') || 150,
   slideID: 0,
   slides: null,
   showCoutdownTimer: false,
@@ -59,7 +59,7 @@ export const mutations = {
     state.slides = []
 
     state.slides.push({ pageType: 'textSlide', id: 'intro-1' })
-    state.slides.push({ pageType: 'textSlide', id: 'intro-2' })
+    // state.slides.push({ pageType: 'textSlide', id: 'intro-2' })
     state.slides.push({ pageType: 'textSlide', id: 'intro-3' })
     state.slides.push({ pageType: 'textSlide', id: 'intro-caption' })
     /*
@@ -71,13 +71,17 @@ export const mutations = {
     state.slides.push({ pageType: 'textSlide', id: 'caption' })
     */
     state.slides.push({ pageType: 'textSlide', id: 'step1' })
-    showCodeSlides(0, 2)
+    // showCodeSlides(0, 2)
     state.slides.push({ pageType: 'textSlide', id: 'step2' })
     showCodeSlides(2, 3)
     state.slides.push({ pageType: 'textSlide', id: 'step3' })
-    showCodeSlides(5, 6)
+    showCodeSlides(5, 4)
     state.slides.push({ pageType: 'textSlide', id: 'take-away-1' })
     state.slides.push({ pageType: 'textSlide', id: 'take-away-2' })
+    state.slides.push({ pageType: 'pictureSlide', id: 'horse1' })
+    state.slides.push({ pageType: 'pictureSlide', id: 'horse2' })
+    state.slides.push({ pageType: 'pictureSlide', id: 'horse3' })
+    state.slides.push({ pageType: 'pictureSlide', id: 'horse4' })
 
     state.slides.push({ pageType: 'textSlide', id: 'close' })
   },

@@ -48,8 +48,15 @@ export default {
       if (event.code === "KeyH") { this.showCoutdownTimer = false }
     },
     onkeydown (event) {
-      if ((event.key == "Backspace") || (event.key == "P") || (event.key == "p") || (event.key == "ArrowLeft")) { this.moveCurrentSlideByID(-1) }
-      if ((event.key == " ") || (event.key == "N") || (event.key == "n") || (event.key == "ArrowRight")) { this.moveCurrentSlideByID(1) }
+      if ((event.key == "Backspace") || (event.key == "P") || (event.key == "p") || (event.key == "ArrowLeft")) {
+        event.preventDefault();
+        this.moveCurrentSlideByID(-1)
+      }
+
+      if ((event.key == " ") || (event.key == "N") || (event.key == "n") || (event.key == "ArrowRight")) {
+        event.preventDefault();
+        this.moveCurrentSlideByID(1)
+      }
     }
   }
 }

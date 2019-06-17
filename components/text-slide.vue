@@ -51,8 +51,8 @@ export default {
         'intro-3': [
           { header: 'Zakaj?', },
           { dt: `GOOGLE: "povprečna starost zaposlenih"` },
-          { dt: `GOOGLE: "ali se bliža naslednja kriza"` },
-          { dt: `GOOGLE: "zaposlitveni oglasi - razvijalec"
+          // { dt: `GOOGLE: "ali se bliža naslednja kriza"` },
+          { dt: `"zaposlitveni oglasi - razvijalec programske opreme"
 <ul>
 <li>JavaScript razvijalci (m/ž)</li>
 <li>HTML/CSS razvijalci (m/ž)</li>
@@ -106,20 +106,20 @@ export default {
           ]
         },
         'step1': [
-          { header: 'Korak 1: HTML in CSS"', },
+          { header: 'Korak 1: HTML in CSS', },
           { dt: 'Dokaj preprosto' },
           { dt: 'Hitro se naučimo' },
           { dt: 'Razvijalci nismo grafični oblikovalci <i class="fas fa-equals" /><i class="fas fa-chevron-right" /> CSS knjžnice' },
         ],
         'step2': [
-          { header: 'Korak 2: JavaScript"', },
+          { header: 'Korak 2: JavaScript', },
           { dt: 'Ime podobno Javi' },
           { dt: 'Sintaksa podobna Javi/C++' },
           { dt: '<b>Podobnost je zelo zavajujoča!</b>' },
           { dt: 'To je programski jezik, ki je bil <b>napisan v 10 dneh!</b>' },
         ],
         'step3': [
-          { header: 'Korak 3: VUE"', },
+          { header: 'Korak 3: VUE', },
           { dt: 'Knjižnica napisana v jeziku JavaScript' },
           { dt: 'Namenjena izdelavi intaraktivnih spletnih strani' },
           { dt: 'Podobna preostalim, kot sta Angular in React' },

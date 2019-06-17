@@ -1,9 +1,10 @@
 <!--
 /**
-description: Prikaz podatkov v tabeli
+description: Prikaz podatkov
 
 slide-text-start
-Prikaz elementarnih podatkov
+Uporaba lastnosti objekta
+Prikaz posameznih elementov polja
 slide-text-end
 **/
 -->
@@ -16,27 +17,11 @@ slide-text-end
   <body style="font-size: 200%">
     <div id="app">
       <div v-if="napaka">{{ napaka }}</div>
-
-      <table border="1">
-        <tr>
-          <th>#</th>
-          <th>Naziv</th>
-          <th>Naslov</th>
-          <th>95</th>
-          <th>100</th>
-          <th>Dizel</th>
-          <th>LPG</th>
-        </tr>
-        <tr v-for="(podatek, pidx) in podatki" :key="pidx">
-          <th>{{ pidx }}</th>
-          <th>{{ podatek.name }}</th>
-          <th>{{ podatek.address }}</th>
-          <th>{{ podatek.prices['95'] }} </th>
-          <th>{{ podatek.prices['100'] }}</th>
-          <th>{{ podatek.prices.dizel }}</th>
-          <th>{{ podatek.prices['avtoplin-lpg'] }}</th>
-        </tr>
-      </table>
+      <pre v-if="podatki">
+        <div v-for="(podatek, pidx) in podatki" :key="pidx">
+          <h1>{{ pidx }}</h1>{{ podatek }}<hr>
+        </div>
+      </pre>
     </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>

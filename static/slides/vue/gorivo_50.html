@@ -14,17 +14,16 @@ slide-text-end
     <meta charset="utf-8">
     <title>Črpalke in cene goriv</title>
   </head>
-  <body style="font-size: 250%">
+  <body style="font-size: 200%">
     <div id="app">
       <div v-if="napaka">{{ napaka }}</div>
 
       <form action="javascript:void(0);">
         <input type="text" placeholder="Kraj..." v-model="kraj" @keyup.enter="isci">
         <button type="button" @click="isci">Išči</button>
-        {{ kraj }}
       </form>
 
-      <table>
+      <table border="1">
         <tr>
           <th>#</th>
           <th>Naziv</th>
@@ -48,6 +47,7 @@ slide-text-end
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="fake_data.js"></script>
 
 <script>
 const CORS_URL = 'https://cors-anywhere.herokuapp.com/'
@@ -68,7 +68,10 @@ let app = new Vue({
 
       axios.get(CORS_URL + goriva_url, { params: goriva_data })
         .then(response => { this.podatki = response.data.results })
-        .catch(e => { this.napaka = e })
+        .catch(e => {
+          console.log("napaka: ", e); // this.napaka = e
+          this.podatki = fake_data.data.results
+        })
     }
   },
 })

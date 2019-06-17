@@ -1,0 +1,36 @@
+<!--
+/**
+description: JavaScript in podpičja
+
+slide-text-start
+ASI - Automatic Semicolon Insertion
+slide-text-end
+**/
+-->
+<!doctype html>
+<html lang="sl">
+  <head><meta charset="utf-8"></head>
+  <body style="font-size: 200%"><div id="results"></div>
+<script src="../../js/fake-console.js"></script>
+<script>
+// -------------------------------------------------------------------
+function test(id) { return (id > 10) ? "Vrednost večja od 10" : "Vrednost manjša od 10" }
+
+console.log(test(5))  // Vrednost manjša od 10
+console.log(test(15)) // Vrednost večja od 10
+
+// -------------------------------------------------------------------
+function test1(id) {
+  return
+    (id > 10) ?
+      "Vrednost večja od 10" :
+      "Vrednost manjša od 10"
+}
+
+console.log(test1(5))  // undefined ??
+console.log(test1(15)) // undefined ??
+// -------------------------------------------------------------------
+</script>
+  </body>
+
+</html>

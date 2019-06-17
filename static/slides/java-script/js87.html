@@ -1,0 +1,49 @@
+<!--
+/**
+description: JavaScript in podpičja
+
+slide-text-start
+Ali je objekt ali je polje?
+Ali je oboje hkrati?
+slide-text-end
+**/
+-->
+<!doctype html>
+<html lang="sl">
+  <head><meta charset="utf-8"></head>
+  <body style="font-size: 200%"><div id="results"></div>
+<script src="../../js/fake-console.js"></script>
+<script>
+// -------------------------------------------------------------------
+let oseba = []
+oseba[0] = "Matjaž"
+oseba[1] = "Prtenjak"
+console.log(oseba.lenght)         // undefined
+console.log(oseba.length)         // 2
+console.log(oseba[0])             // "Matjaž"
+console.log(typeof oseba)         // "object" ???
+console.log(Array.isArray(oseba)) // true
+
+// -------------------------------------------------------------------
+let oseba1 = []
+oseba1["ime"] = "Matjaž"
+oseba1["priimek"] = "Prtenjak"
+console.log(oseba1.length)         // 0  ???
+console.log(oseba1[0])             // undefined
+console.log(typeof oseba1)         // "object"
+console.log(Array.isArray(oseba1)) // true ??
+
+// -------------------------------------------------------------------
+let oseba2 = {}
+oseba2["ime"] = "Matjaž"
+oseba2["priimek"] = "Prtenjak"
+console.log(oseba2.length)         // undefined
+console.log(oseba2[0])             // undefined
+console.log(typeof oseba2)         // "object"
+console.log(Array.isArray(oseba2)) // false
+
+// -------------------------------------------------------------------
+</script>
+  </body>
+
+</html>

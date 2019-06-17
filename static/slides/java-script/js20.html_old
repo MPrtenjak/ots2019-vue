@@ -10,7 +10,7 @@ slide-text-end
 <!doctype html>
 <html lang="sl">
   <head><meta charset="utf-8"></head>
-  <body style="font-size: 250%"><div id="results"></div>
+  <body style="font-size: 200%"><div id="results"></div>
 <script>
 let console = {
   log: function() {

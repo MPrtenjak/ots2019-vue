@@ -8,6 +8,7 @@
     "build-css": "node-sass static/scss/ -o static/css/",
     "build-demo": "node build",
     "build-assets": "npm run build-css && npm run build-demo",
+
     "dev": "npm run build-assets && nuxt",
     "build": "npm run build-assets && nuxt build",
     "start": "npm run build-assets && nuxt start",

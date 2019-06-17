@@ -63,6 +63,7 @@ slide-text-end
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="fake_data.js"></script>
 
 <script>
 const CORS_URL = 'https://cors-anywhere.herokuapp.com/'
@@ -93,7 +94,10 @@ let app = new Vue({
       this.iscem = true;
       axios.get(CORS_URL + goriva_url, { params: goriva_data })
         .then(response => { this.podatki = response.data.results })
-        .catch(e => { this.napaka = e })
+        .catch(e => {
+          console.log("napaka: ", e); // this.napaka = e
+          this.podatki = fake_data.data.results
+        })
         .finally(() => { this.iscem = null })
     },
     sestaviMapsURL(podatek) {

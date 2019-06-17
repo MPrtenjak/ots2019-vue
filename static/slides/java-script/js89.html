@@ -1,0 +1,53 @@
+<!--
+/**
+description: JavaScript in podpičja
+
+slide-text-start
+ASI - Automatic Semicolon Insertion
+slide-text-end
+**/
+-->
+<!doctype html>
+<html lang="sl">
+  <head><meta charset="utf-8"></head>
+  <body style="font-size: 200%"><div id="results"></div>
+<script src="../../js/fake-console.js"></script>
+<script>
+// -------------------------------------------------------------------
+let a = "10"
+let b = 10
+
+if (a == b) {
+  console.log("enaka, oba imata vrednost 10")
+} else {
+  console.log("nista enaka")
+}
+// enaka, oba imata vrednost 10
+
+// -------------------------------------------------------------------
+switch(a) {
+  case "10" :
+    console.log("a ima vrednost 10")
+    break;
+
+  default:
+    console.log("a je različen od 10")
+}
+// a ima vrednost 10
+
+// -------------------------------------------------------------------
+switch(b) {
+  case "10" :
+    console.log("b ima vrednost 10")
+    break;
+
+  default:
+    console.log("b je različen od 10")
+}
+// b je različen od 10
+
+// -------------------------------------------------------------------
+</script>
+  </body>
+
+</html>
