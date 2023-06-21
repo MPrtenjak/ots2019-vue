@@ -23,7 +23,7 @@
     "cross-env": "^5.2.0",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
-    "nuxt": "^2.7.1",
+    "nuxt": "^3.4.3",
     "sass-loader": "^7.1.0",
     "underscore": "^1.9.1"
   },
